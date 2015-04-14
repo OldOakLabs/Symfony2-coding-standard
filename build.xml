@@ -17,6 +17,7 @@
     <target name="vendor" description="Load composer repositories" depends="composer">
         <exec executable="composer" failonerror="true">
             <arg value="install" />
+            <arg value="--prefer-source" />
         </exec>
         <exec executable="${basedir}/bin/phpcs" failonerror="true">
             <arg value="--config-set" />
