@@ -18,7 +18,7 @@
         <exec executable="composer" failonerror="true">
             <arg value="install" />
         </exec>
-        <exec executable="${basedir}/vendor/bin/phpcs" failonerror="true">
+        <exec executable="${basedir}/bin/phpcs" failonerror="true">
             <arg value="--config-set" />
             <arg value="installed_paths" />
             <arg value="${basedir}/src/" />
@@ -47,14 +47,14 @@
     </target>
 
     <target name="phpunit" description="Run unit tests with PHPUnit" depends="vendor">
-        <exec executable="${basedir}/vendor/bin/phpunit" failonerror="true" >
+        <exec executable="${basedir}/bin/phpunit" failonerror="true" >
             <arg value="--filter=Symfony2_*" />
             <arg value="${basedir}/vendor/squizlabs/php_codesniffer/tests/AllTests.php" />
         </exec>
     </target>
 
     <target name="phpcs" description="Find coding standard violations using PHP Code Sniffer" depends="vendor">
-        <exec executable="${basedir}/vendor/bin/phpcs">
+        <exec executable="${basedir}/bin/phpcs">
             <arg value="--standard=${phpcs.standard}" />
             <arg value="--ignore=vendor/*" /> 
             <arg path="${basedir}" />
