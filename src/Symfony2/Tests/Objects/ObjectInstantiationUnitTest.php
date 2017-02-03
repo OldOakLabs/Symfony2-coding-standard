@@ -13,7 +13,7 @@
  */
 
 /**
- * Unit test class for the BlankLineBeforeReturn sniff.
+ * Unit test class for the ObjectInstantiation sniff.
  *
  * A sniff unit test checks a .inc file for expected violations of a single
  * coding standard. Expected errors and warnings are stored in this class.
@@ -26,7 +26,7 @@
  * @license  http://spdx.org/licenses/MIT MIT License
  * @link     https://github.com/escapestudios/Symfony2-coding-standard
  */
-class Symfony2_Tests_Formatting_BlankLineBeforeReturnUnitTest
+class Symfony2_Tests_Objects_ObjectInstantiationUnitTest
     extends AbstractSniffUnitTest
 {
     /**
@@ -35,12 +35,18 @@ class Symfony2_Tests_Formatting_BlankLineBeforeReturnUnitTest
      * The key of the array should represent the line number and the value
      * should represent the number of errors that should occur on that line.
      *
-     * @return array(int => int)
+     * @return array<int, int>
      */
     public function getErrorList()
     {
         return array(
-            37 => 1
+            4  => 1,
+            5  => 1,
+            6  => 1,
+            7  => 1,
+            8  => 1,
+            9  => 1,
+            10 => 1,
         );
     }
 

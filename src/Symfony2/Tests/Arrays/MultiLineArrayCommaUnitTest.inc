@@ -1,6 +1,6 @@
 <?php
 
-// Classic array syntax
+// classic array syntax
 $arr = array('foo', 'bar');
 
 $arr = array(
@@ -13,7 +13,7 @@ $arr = array(
         'bar'
 );
 
-// Short array syntax
+// short array syntax
 $arr = ['foo', 'bar'];
 
 $arr = [
@@ -24,4 +24,50 @@ $arr = [
 $arr = [
         'foo'
         'bar'
+];
+
+// classic array syntax with comments
+$arr = array('foo', 'bar' /* baz */);
+
+$arr = array(
+        'foo'
+        'bar', //baz
+);
+
+$arr = array(
+        'foo'
+        'bar' //baz
+);
+
+$arr = array(
+        'foo'
+        'bar', /* baz */
+);
+
+$arr = array(
+        'foo'
+        'bar' /* baz */
+);
+
+// short array syntax with comments
+$arr = ['foo', 'bar' /* baz */];
+
+$arr = [
+        'foo'
+        'bar', //baz
+];
+
+$arr = [
+        'foo'
+        'bar' //baz
+];
+
+$arr = [
+        'foo'
+        'bar', /* baz */
+];
+
+$arr = [
+        'foo'
+        'bar' /* baz */
 ];

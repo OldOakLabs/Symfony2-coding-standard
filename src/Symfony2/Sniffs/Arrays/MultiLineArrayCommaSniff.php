@@ -48,7 +48,7 @@ class Symfony2_Sniffs_Arrays_MultiLineArrayCommaSniff
                 T_OPEN_SHORT_ARRAY,
                );
 
-    }//end register()
+    }
 
     /**
      * Processes this test, when one of its tokens is encountered.
@@ -76,7 +76,9 @@ class Symfony2_Sniffs_Arrays_MultiLineArrayCommaSniff
             while ($lastComma < $closePtr -1) {
                 $lastComma++;
 
-                if ($tokens[$lastComma]['code'] !== T_WHITESPACE) {
+                if ($tokens[$lastComma]['code'] !== T_WHITESPACE
+                    && $tokens[$lastComma]['code'] !== T_COMMENT
+                ) {
                     $phpcsFile->addError(
                         'Add a comma after each item in a multi-line array',
                         $stackPtr,
@@ -87,7 +89,6 @@ class Symfony2_Sniffs_Arrays_MultiLineArrayCommaSniff
             }
         }
 
-    }//end process()
+    }
 
-}//end class
-
+}

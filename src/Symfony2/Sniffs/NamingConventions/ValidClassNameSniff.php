@@ -1,14 +1,14 @@
 <?php
+
 /**
  * This file is part of the Symfony2-coding-standard (phpcs standard)
  *
  * PHP version 5
  *
  * @category PHP
- * @package  PHP_CodeSniffer-Symfony2
- * @author   Symfony2-phpcs-authors <Symfony2-coding-standard@escapestudios.github.com>
+ * @package  Symfony2-coding-standard
+ * @author   Authors <Symfony2-coding-standard@escapestudios.github.com>
  * @license  http://spdx.org/licenses/MIT MIT License
- * @version  GIT: master
  * @link     https://github.com/escapestudios/Symfony2-coding-standard
  */
 
@@ -17,14 +17,16 @@
  *
  * Throws errors if symfony's naming conventions are not met.
  *
+ * PHP version 5
+ *
  * @category PHP
- * @package  PHP_CodeSniffer-Symfony2
- * @author   Dave Hauenstein <davehauenstein@gmail.com>
- * @author   wicliff wolda <dev@bloody-wicked.com>
+ * @package  Symfony2-coding-standard
+ * @author   Authors <Symfony2-coding-standard@escapestudios.github.com>
  * @license  http://spdx.org/licenses/MIT MIT License
  * @link     https://github.com/escapestudios/Symfony2-coding-standard
  */
-class Symfony2_Sniffs_NamingConventions_ValidClassNameSniff implements PHP_CodeSniffer_Sniff
+class Symfony2_Sniffs_NamingConventions_ValidClassNameSniff
+    implements PHP_CodeSniffer_Sniff
 {
     /**
      * A list of tokenizers this sniff supports.
@@ -76,7 +78,7 @@ class Symfony2_Sniffs_NamingConventions_ValidClassNameSniff implements PHP_CodeS
                     $phpcsFile->addError(
                         'Interface name is not suffixed with "Interface"',
                         $stackPtr,
-                        'Invalid'
+                        'InvalidInterfaceName'
                     );
                 }
                 break;
@@ -92,7 +94,7 @@ class Symfony2_Sniffs_NamingConventions_ValidClassNameSniff implements PHP_CodeS
                     $phpcsFile->addError(
                         'Trait name is not suffixed with "Trait"',
                         $stackPtr,
-                        'Invalid'
+                        'InvalidTraitName'
                     );
                 }
                 break;
@@ -104,15 +106,19 @@ class Symfony2_Sniffs_NamingConventions_ValidClassNameSniff implements PHP_CodeS
             if ('T_EXTENDS' == $tokens[$stackPtr]['type']) {
                 $extend = $phpcsFile->findNext(T_STRING, $stackPtr);
 
-                if ($extend && substr($tokens[$extend]['content'], -9) == 'Exception') {
+                if ($extend
+                    && substr($tokens[$extend]['content'], -9) == 'Exception'
+                ) {
                     $class = $phpcsFile->findPrevious(T_CLASS, $stackPtr);
                     $name = $phpcsFile->findNext(T_STRING, $class);
 
-                    if ($name && substr($tokens[$name]['content'], -9) != 'Exception') {
+                    if ($name
+                        && substr($tokens[$name]['content'], -9) != 'Exception'
+                    ) {
                         $phpcsFile->addError(
                             'Exception name is not suffixed with "Exception"',
                             $stackPtr,
-                            'Invalid'
+                            'InvalidExceptionName'
                         );
                     }
                 }
@@ -127,11 +133,14 @@ class Symfony2_Sniffs_NamingConventions_ValidClassNameSniff implements PHP_CodeS
                 $function = $phpcsFile->findNext(T_FUNCTION, $stackPtr);
                 
                 // making sure we're not dealing with an abstract function
-                if ($name && (is_null($function) || $name < $function) && substr($tokens[$name]['content'], 0, 8) != 'Abstract') {
+                if ($name && (is_null($function)
+                    || $name < $function)
+                    && substr($tokens[$name]['content'], 0, 8) != 'Abstract'
+                ) {
                     $phpcsFile->addError(
                         'Abstract class name is not prefixed with "Abstract"',
                         $stackPtr,
-                        'Invalid'
+                        'InvalidAbstractName'
                     );
                 }
                 break;

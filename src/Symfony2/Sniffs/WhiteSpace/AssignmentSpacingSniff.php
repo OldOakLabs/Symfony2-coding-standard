@@ -13,11 +13,11 @@
  */
 
 /**
- * Symfony2_Sniffs_Classes_PropertyDeclarationSniff.
+ * Symfony2_Sniffs_WhiteSpace_AssignmentSpacingSniff.
  *
- * Throws warnings if properties are declared after methods
+ * Throws warnings if an assignment operator isn't surrounded with whitespace.
  *
-* PHP version 5
+ * PHP version 5
  *
  * @category PHP
  * @package  Symfony2-coding-standard
@@ -25,18 +25,17 @@
  * @license  http://spdx.org/licenses/MIT MIT License
  * @link     https://github.com/escapestudios/Symfony2-coding-standard
  */
-class Symfony2_Sniffs_Classes_PropertyDeclarationSniff
+class Symfony2_Sniffs_WhiteSpace_AssignmentSpacingSniff
     implements PHP_CodeSniffer_Sniff
 {
-
     /**
      * A list of tokenizers this sniff supports.
      *
      * @var array
      */
     public $supportedTokenizers = array(
-        'PHP',
-    );
+                                   'PHP',
+                                  );
 
     /**
      * Returns an array of tokens this test wants to listen for.
@@ -45,9 +44,8 @@ class Symfony2_Sniffs_Classes_PropertyDeclarationSniff
      */
     public function register()
     {
-        return array(
-            T_CLASS,
-        );
+        return PHP_CodeSniffer_Tokens::$assignmentTokens;
+
     }
 
     /**
@@ -63,38 +61,14 @@ class Symfony2_Sniffs_Classes_PropertyDeclarationSniff
     {
         $tokens = $phpcsFile->getTokens();
 
-        $end = null;
-        if (isset($tokens[$stackPtr]['scope_closer'])) {
-            $end = $tokens[$stackPtr]['scope_closer'];
-        }
-
-        $scope = $phpcsFile->findNext(
-            T_FUNCTION,
-            $stackPtr,
-            $end
-        );
-
-        $wantedTokens = array(
-            T_PUBLIC,
-            T_PROTECTED,
-            T_PRIVATE
-        );
-
-        while ($scope) {
-            $scope = $phpcsFile->findNext(
-                $wantedTokens,
-                $scope + 1,
-                $end
+        if ($tokens[$stackPtr -1]['code'] !== T_WHITESPACE
+            || $tokens[$stackPtr +1]['code'] !== T_WHITESPACE
+        ) {
+            $phpcsFile->addError(
+                'Add a single space around assignment operators',
+                $stackPtr,
+                'Invalid'
             );
-
-            if ($scope && $tokens[$scope + 2]['code'] === T_VARIABLE) {
-                $phpcsFile->addError(
-                    'Declare class properties before methods',
-                    $scope,
-                    'Invalid'
-                );
-            }
         }
     }
-
 }
