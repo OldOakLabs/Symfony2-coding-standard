@@ -19,7 +19,7 @@ Installation
   a) Copy or symlink the contained Symfony2 directory to the ``phpcs`` 'Standards' directory  
 
         $ cd path/to/Standards
-        $ ln -s /path/to/clone/Symfony2-coding-standards Symfony2
+        $ ln -s /path/to/clone/Symfony2-coding-standards/ Symfony2
         
   b) Add the cloned project to ``phpcs`` ``installed_paths``
 
@@ -28,7 +28,7 @@ Installation
         (
             [installed_paths] => /usr/local/etc/php-code-sniffer/Standards
         )
-        $ phpcs --config-set installed_paths /usr/local/etc/php-code-sniffer/Standards/,/path/to/clone/Symfony2-coding-standards/
+        $ phpcs --config-set installed_paths /usr/local/etc/php-code-sniffer/Standards/,/path/to/clone/Symfony2-coding-standards/src/
         
      Note the usage of the previous ``installed_paths``. Do not forget this, or it will just be overwritten.
 
@@ -44,7 +44,7 @@ Installation
 
 3. Add the Symfony2 coding standard to the PHP_CodeSniffer install path. This path is relative to the ``phpcs`` home directory. For a default composer project this will be under ./vendor/squizlabs/php_codesniffer, so ``../../oldoaklabs`` is literally ``./vendor/oldoaklabs/``
 
-        $ bin/phpcs --config-set installed_paths ../../oldoaklabs/symfony2-coding-standard/
+        $ bin/phpcs --config-set installed_paths ../../oldoaklabs/symfony2-coding-standard/src/
 
 4. Done! You will want to use the local ``bin/phpcs`` for checking this project's source, rather than trying to use the global ``phpcs`` (which may or may not exist)
 
