@@ -23,7 +23,7 @@
         <exec executable="${basedir}/bin/phpcs" failonerror="true">
             <arg value="--config-set" />
             <arg value="installed_paths" />
-            <arg value="${basedir}/src/" />
+            <arg value="${basedir}/src/Standards" />
         </exec>
     </target>
 
