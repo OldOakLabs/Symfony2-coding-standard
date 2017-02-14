@@ -60,7 +60,7 @@ Usage as Part of a Symfony2 Project
 -----------------------------------
 So you want to use this standard as part of a Symfony2 project? _"Easy!"_ you say, _"it IS the Symfony2 coding standard. It will just work"_.
 
-Well..."yes"...with a "but".
+Yes, but one minor thing...
 
 The Symfony2 project doesn't always conform to the Symfony2 coding standards. Furthermore, there are directories you may not want to check on your project (such as the ``./vendors`` directory) If you want to use this standard on a Symfony2 project without getting false errors and warnings from code your project didn't author, you still can. Copy or symlink the ``project.ruleset.xml.dist`` template to ``app/ruleset.xml``
 
