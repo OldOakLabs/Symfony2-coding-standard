@@ -1,9 +1,9 @@
-[![Build Status](https://secure.travis-ci.org/escapestudios/Symfony2-coding-standard.png)](http://travis-ci.org/escapestudios/Symfony2-coding-standard)
+[![Build Status](https://secure.travis-ci.org/OldOakLabs/Symfony2-coding-standard.png)](http://travis-ci.org/OldOakLabs/Symfony2-coding-standard)
 
 Symfony2 PHP CodeSniffer Coding Standard
 ========================================
 
-A code standard to check against the [Symfony coding standards](http://symfony.com/doc/current/contributing/code/standards.html), originally shamelessly copied from the -disappeared- opensky/Symfony2-coding-standard repository.
+A coding standard to check against the [Symfony coding standards](http://symfony.com/doc/current/contributing/code/standards.html), forked from [Djoos/Symfony2-coding-standard](//github.com/djoos/Symfony2-coding-standard). This repository allows easier installation of the repository by checking out directly to the PHP_CodeSniffer Standards directory.
 
 Installation
 ------------
@@ -33,7 +33,6 @@ Installation
      Note the usage of the previous ``installed_paths``. Do not forget this, or it will just be overwritten.
 
 ### As Part of a Composer Project
-
 
 1. [Install Composer](https://getcomposer.org/doc/00-intro.md) if you don't already have it.  
 1.1. If this is a non Composer project, initiate it with ``composer init``. This will create a ``composer.json`` flie. 
