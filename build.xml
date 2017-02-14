@@ -37,6 +37,7 @@
             <fileset dir="${basedir}">
                 <include name="**/*.php" />
                 <exclude name="vendor/**" />
+                <exclude name="Sniffs/**" />
             </fileset>
         </apply>
     </target>
