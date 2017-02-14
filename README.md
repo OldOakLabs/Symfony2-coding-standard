@@ -17,9 +17,14 @@ Installation
         
 3. Make the Symfony2 standard available to ``phpcs`` using one of the following options  
   a) Copy or symlink the contained Symfony2 directory to the ``phpcs`` 'Standards' directory  
-
-        $ cd path/to/Standards
-        $ ln -s /path/to/clone/Symfony2-coding-standards/ Symfony2
+  
+        $ phpcs --config-show installed_paths
+        Array
+        (
+            [installed_paths] => /usr/local/etc/php-code-sniffer/Standards
+        )
+        $ cd /usr/local/etc/php-code-sniffer/Standards
+        $ git clone git@github.com:OldOakLabs/Symfony2-coding-standard.git Symfony2
         
   b) Add the cloned project to ``phpcs`` ``installed_paths``
 
